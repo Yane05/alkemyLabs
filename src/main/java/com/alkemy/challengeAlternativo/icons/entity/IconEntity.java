@@ -2,9 +2,19 @@ package com.alkemy.challengeAlternativo.icons.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +23,12 @@ import java.util.List;
 @Table(name = "icon")
 @Getter
 @Setter
+@SQLDelete(sql = "UPDATE icon SET deleted = true WHERE id = ?")
+@Where(clause= "delete = false")
+
 public class IconEntity {
     @Id
-    @GeneratedValue (strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     private String imagen;
@@ -28,7 +41,9 @@ public class IconEntity {
     private Long altura;
     private String historia;
 
-    @ManyToMany (mappedBy = "icons", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "icons", cascade = CascadeType.ALL)
     private List<PaisEntity> paises = new ArrayList<>();
+
+    private boolean deleted = Boolean.FALSE;
 
 }
