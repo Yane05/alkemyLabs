@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class PaisServiceImpl implements PaisService {
@@ -61,8 +62,8 @@ public class PaisServiceImpl implements PaisService {
         return paisRepository.getById(id);
     }
 
-    public List<PaisDTO> getByFilters(String name, Long idContinente, String order) {
-        PaisFiltersDTO filtersDTO = new PaisFiltersDTO(name, idContinente, order);
+    public List<PaisDTO> getByFilters(String name, Set<Long> continentes, String order) {
+        PaisFiltersDTO filtersDTO = new PaisFiltersDTO(name, continentes, order);
         List<PaisEntity> entities = paisRepository.findAll(paisSpecification.getByFilters(filtersDTO));
         List<PaisDTO> dtos = paisMapper.paisEntityList2DTOList(entities, true);
         return dtos;
@@ -71,4 +72,5 @@ public class PaisServiceImpl implements PaisService {
     public void delete(Long id) {
         paisRepository.deleteById(id);
     }
+
 }

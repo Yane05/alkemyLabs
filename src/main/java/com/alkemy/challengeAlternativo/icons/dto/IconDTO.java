@@ -13,7 +13,7 @@ public class IconDTO {
     private Long id;
     private String imagen;
     private String denominacion;
-    private LocalDate fechaCreacion;
+    private String fechaCreacion;
     private Long altura;
     private String historia;
     private List<PaisDTO> paises;

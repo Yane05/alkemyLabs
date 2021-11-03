@@ -1,7 +1,9 @@
 package com.alkemy.challengeAlternativo.icons.dto;
 
 import lombok.Data;
-import 
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 
 @Data
 public class UserDTO {

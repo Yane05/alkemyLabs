@@ -26,24 +26,11 @@ public class PaisSpecification {
                         )
                 );
             }
-            if (!CollectionUtils.isEmpty(filtersDTO.getIdContinente())) {
+            if (!CollectionUtils.isEmpty(filtersDTO.getContinentes())) {
                 Join<ContinenteEntity, PaisEntity> join = root.join("continentes", JoinType.INNER);
                 Expression<String> continenteId = join.get("id");
-                predicates.add(continenteId.in(filtersDTO.getIdContinente()));
+                predicates.add(continenteId.in(filtersDTO.getContinentes()));
             }
-            /*if (NumberUtils.parseNumber(filtersDTO.getIdContinente()), Long){
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                LocalDate date = LocalDate.parse(filtersDTO.getDate(), formatter);
-
-                predicates.add(
-                        criteriaBuilder.equal(root.<LocalDate>get("fechaCreacion"),date)
-                );
-            }
-            if (!CollectionUtils.isEmpty(filtersDTO.getCities())){
-                Join<PaisEntity, IconEntity> join = root.join("paises", JoinType.INNER);
-                Expression<String> citiesId = join.get("id");
-                predicates.add(citiesId.in(filtersDTO.getCities()));
-            }*/
 
             //Remove duplicates
             query.distinct(true);

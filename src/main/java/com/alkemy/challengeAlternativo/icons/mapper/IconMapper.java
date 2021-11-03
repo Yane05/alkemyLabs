@@ -23,7 +23,7 @@ public class IconMapper {
         IconEntity iconEntity = new IconEntity();
         iconEntity.setImagen(dto.getImagen());
         iconEntity.setDenominacion(dto.getDenominacion());
-        iconEntity.setFechaCreacion(dto.getFechaCreacion());
+        iconEntity.setFechaCreacion(string2LocalDate(dto.getFechaCreacion()));
         iconEntity.setAltura(dto.getAltura());
         iconEntity.setHistoria(dto.getHistoria());
         return iconEntity;
@@ -34,7 +34,7 @@ public class IconMapper {
         dto.setId(entity.getId());
         dto.setImagen(entity.getImagen());
         dto.setDenominacion(entity.getDenominacion());
-        dto.setFechaCreacion(entity.getFechaCreacion());
+        dto.setFechaCreacion(String.valueOf(entity.getFechaCreacion()));
         dto.setAltura(entity.getAltura());
         dto.setHistoria(entity.getHistoria());
         if (loadPaises) {

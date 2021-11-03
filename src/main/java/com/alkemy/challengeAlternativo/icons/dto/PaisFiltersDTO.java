@@ -9,12 +9,12 @@ import java.util.Set;
 @Setter
 public class PaisFiltersDTO {
     private String name;
-    private Long idContinente;
+    private Set<Long> continentes;
     private String order;
 
-    public PaisFiltersDTO(String name, Long idContinente, String order) {
+    public PaisFiltersDTO(String name, Set<Long> continentes, String order) {
         this.name = name;
-        this.idContinente = idContinente;
+        this.continentes = continentes;
         this.order = order;
     }
 
