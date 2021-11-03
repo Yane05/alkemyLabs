@@ -2,6 +2,8 @@ package com.alkemy.challengeAlternativo.icons.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,6 +24,9 @@ import java.util.Set;
 @Table(name = "pais")
 @Getter
 @Setter
+@SQLDelete(sql = "UPDATE pais SET deleted = true WHERE id = ?")
+@Where(clause= "delete = false")
+
 public class PaisEntity {
 
     @Id
@@ -54,4 +59,6 @@ public class PaisEntity {
             joinColumns = @JoinColumn(name = "pais_id"),
             inverseJoinColumns = @JoinColumn(name = "icon_id"))
     private Set<IconEntity> icons = new HashSet<>();
+
+    private boolean deleted = Boolean.FALSE;
 }

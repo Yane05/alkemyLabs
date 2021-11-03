@@ -7,4 +7,5 @@ import java.util.List;
 public interface ContinenteService{
     ContinenteDTO save (ContinenteDTO dto);
     List<ContinenteDTO> getAllContinentes();
+    void delete(Long id);
 }

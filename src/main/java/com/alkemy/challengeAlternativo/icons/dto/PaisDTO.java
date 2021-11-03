@@ -1,10 +1,9 @@
 package com.alkemy.challengeAlternativo.icons.dto;
 
-import com.alkemy.challengeAlternativo.icons.entity.IconEntity;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Set;
+import java.util.List;
 
 
 @Getter
@@ -16,5 +15,6 @@ public class PaisDTO {
     private String denominacion;
     private Long cantidadHabitantes;
     private Long superficie;
-    private Set<IconEntity> icons;
+    private List<IconDTO> icons;
+    private Long continenteId;
 }
