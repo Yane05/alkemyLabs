@@ -34,7 +34,7 @@ public class IconMapper {
         dto.setId(entity.getId());
         dto.setImagen(entity.getImagen());
         dto.setDenominacion(entity.getDenominacion());
-        dto.setFechaCreacion(String.valueOf(entity.getFechaCreacion()));
+        dto.setFechaCreacion(entity.getFechaCreacion().toString());
         dto.setAltura(entity.getAltura());
         dto.setHistoria(entity.getHistoria());
         if (loadPaises) {

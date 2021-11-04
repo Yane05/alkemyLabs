@@ -4,6 +4,7 @@ import com.alkemy.challengeAlternativo.icons.dto.PaisFiltersDTO;
 import com.alkemy.challengeAlternativo.icons.entity.ContinenteEntity;
 import com.alkemy.challengeAlternativo.icons.entity.PaisEntity;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
@@ -14,6 +15,7 @@ import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class PaisSpecification {
     public Specification<PaisEntity> getByFilters(PaisFiltersDTO filtersDTO) {
         return (root, query, criteriaBuilder) -> {

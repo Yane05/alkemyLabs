@@ -25,7 +25,7 @@ public class IconController {
     @Autowired
     private IconService iconService;
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<IconDTO>> getAll(){
         List<IconDTO> icons = iconService.getAllIcons();
         return ResponseEntity.ok().body(icons);

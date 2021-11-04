@@ -23,14 +23,14 @@ public class ContinenteController {
     @Autowired
     private ContinenteService continenteService;
 
-    @GetMapping
-    public ResponseEntity<List<ContinenteDTO>> getAll(){
+    @GetMapping("/all")
+    public ResponseEntity<List<ContinenteDTO>> getAll() {
         List<ContinenteDTO> continentes = continenteService.getAllContinentes();
         return ResponseEntity.ok().body(continentes);
     }
 
     @PostMapping
-    public ResponseEntity<ContinenteDTO> save(@RequestBody ContinenteDTO continente){
+    public ResponseEntity<ContinenteDTO> save(@RequestBody ContinenteDTO continente) {
         //guardar continente
         ContinenteDTO continenteGuardado = continenteService.save(continente);
 
@@ -39,7 +39,7 @@ public class ContinenteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete (@PathVariable Long id){
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         continenteService.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

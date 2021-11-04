@@ -19,20 +19,14 @@ import java.util.Set;
 public class PaisServiceImpl implements PaisService {
 
     //Repo
-    private PaisRepository paisRepository;
-    private PaisSpecification paisSpecification;
-    //Mapper
-    private PaisMapper paisMapper;
-
     @Autowired
-    public PaisServiceImpl(
-            PaisRepository paisRepository,
-            PaisSpecification paisSpecification,
-            PaisMapper paisMapper) {
-        this.paisRepository = paisRepository;
-        this.paisSpecification = paisSpecification;
-        this.paisMapper = paisMapper;
-    }
+    private PaisRepository paisRepository;
+    @Autowired
+    private PaisSpecification paisSpecification;
+
+    //Mapper
+    @Autowired
+    private PaisMapper paisMapper;
 
     public PaisDTO save(PaisDTO dto) {
         PaisEntity entity = paisMapper.paisDTO2Entity(dto);

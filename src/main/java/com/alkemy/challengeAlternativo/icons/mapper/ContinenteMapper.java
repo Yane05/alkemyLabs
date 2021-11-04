@@ -9,7 +9,7 @@ import java.util.List;
 
 @Component
 public class ContinenteMapper {
-    public ContinenteEntity continenteDTO2Entity (ContinenteDTO dto){
+    public ContinenteEntity continenteDTO2Entity(ContinenteDTO dto) {
         ContinenteEntity continenteEntity = new ContinenteEntity();
         continenteEntity.setImagen(dto.getImagen());
         continenteEntity.setDenominacion(dto.getDenominacion());
@@ -26,7 +26,7 @@ public class ContinenteMapper {
 
     public List<ContinenteDTO> continenteEntityList2DTOList(List<ContinenteEntity> entities) {
         List<ContinenteDTO> dtos = new ArrayList<>();
-        for (ContinenteEntity entity : entities){
+        for (ContinenteEntity entity : entities) {
             dtos.add(continenteEntity2DTO(entity));
         }
         return dtos;

@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @SQLDelete(sql = "UPDATE continente SET deleted = true WHERE id = ?")
-@Where(clause= "delete = false")
+@Where(clause = "delete = false")
 
 public class ContinenteEntity {
 

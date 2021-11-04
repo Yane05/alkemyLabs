@@ -19,21 +19,14 @@ import java.util.Set;
 public class IconServiceImpl implements IconService {
 
     //Repo
+    @Autowired
     private IconRepository iconRepository;
+    @Autowired
     private IconSpecification iconSpecification;
 
     //Mapper
-    private IconMapper iconMapper;
-
     @Autowired
-    public IconServiceImpl(
-            IconRepository iconRepository,
-            IconSpecification iconSpecification,
-            IconMapper iconMapper) {
-        this.iconRepository = iconRepository;
-        this.iconSpecification = iconSpecification;
-        this.iconMapper = iconMapper;
-    }
+    private IconMapper iconMapper;
 
     public IconDTO save(IconDTO dto) {
         IconEntity entity = iconMapper.iconDTO2Entity(dto);

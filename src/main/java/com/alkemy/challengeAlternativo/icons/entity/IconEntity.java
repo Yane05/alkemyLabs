@@ -6,7 +6,6 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.DateTimeFormat;
 
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +23,7 @@ import java.util.List;
 @Getter
 @Setter
 @SQLDelete(sql = "UPDATE icon SET deleted = true WHERE id = ?")
-@Where(clause= "delete = false")
+@Where(clause = "delete = false")
 
 public class IconEntity {
     @Id

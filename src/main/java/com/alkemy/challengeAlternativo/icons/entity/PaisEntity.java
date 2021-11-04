@@ -25,7 +25,7 @@ import java.util.Set;
 @Getter
 @Setter
 @SQLDelete(sql = "UPDATE pais SET deleted = true WHERE id = ?")
-@Where(clause= "delete = false")
+@Where(clause = "delete = false")
 
 public class PaisEntity {
 
@@ -42,7 +42,7 @@ public class PaisEntity {
 
     private Long superficie;// m2
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "continente_id", insertable = false, updatable = false)
     private ContinenteEntity continente;
 

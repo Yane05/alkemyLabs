@@ -1,6 +1,5 @@
 package com.alkemy.challengeAlternativo.icons.controller;
 
-import com.alkemy.challengeAlternativo.icons.dto.IconDTO;
 import com.alkemy.challengeAlternativo.icons.dto.PaisDTO;
 import com.alkemy.challengeAlternativo.icons.service.PaisService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +25,8 @@ public class PaisController {
     @Autowired
     private PaisService paisService;
 
-    @GetMapping
-    public ResponseEntity<List<PaisDTO>> getAll(){
+    @GetMapping("/all")
+    public ResponseEntity<List<PaisDTO>> getAll() {
         List<PaisDTO> paises = paisService.getAllPaises();
         return ResponseEntity.ok().body(paises);
     }
@@ -35,27 +34,27 @@ public class PaisController {
     @GetMapping
     public ResponseEntity<List<PaisDTO>> getDetailsByFilters(
             @RequestParam(required = false) String name,
-            @RequestParam (required = false) Set<Long> continentes,
-            @RequestParam (required = false, defaultValue = "ASC") String order
-    ){
-        List<PaisDTO> paises = paisService.getByFilters(name,continentes,order);
+            @RequestParam(required = false) Set<Long> continentes,
+            @RequestParam(required = false, defaultValue = "ASC") String order
+    ) {
+        List<PaisDTO> paises = paisService.getByFilters(name, continentes, order);
         return ResponseEntity.ok(paises);
     }
 
     @PostMapping
-    public ResponseEntity<PaisDTO> save(@RequestBody PaisDTO pais){
+    public ResponseEntity<PaisDTO> save(@RequestBody PaisDTO pais) {
         PaisDTO paisSaved = paisService.save(pais);
         return ResponseEntity.status(HttpStatus.CREATED).body(paisSaved);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete (@PathVariable Long id){
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         paisService.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PaisDTO> update(@PathVariable Long id, @RequestBody PaisDTO paisDTO){
+    public ResponseEntity<PaisDTO> update(@PathVariable Long id, @RequestBody PaisDTO paisDTO) {
         PaisDTO result = paisService.update(id, paisDTO);
         return ResponseEntity.ok().body(result);
     }

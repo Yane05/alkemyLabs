@@ -2,7 +2,6 @@ package com.alkemy.challengeAlternativo.icons.mapper;
 
 import com.alkemy.challengeAlternativo.icons.dto.IconDTO;
 import com.alkemy.challengeAlternativo.icons.dto.PaisDTO;
-import com.alkemy.challengeAlternativo.icons.entity.IconEntity;
 import com.alkemy.challengeAlternativo.icons.entity.PaisEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,7 +15,7 @@ public class PaisMapper {
     @Autowired
     private IconMapper iconMapper;
 
-    public PaisEntity paisDTO2Entity (PaisDTO dto){
+    public PaisEntity paisDTO2Entity(PaisDTO dto) {
         PaisEntity paisEntity = new PaisEntity();
         paisEntity.setImagen(dto.getImagen());
         paisEntity.setDenominacion(dto.getDenominacion());
@@ -33,8 +32,8 @@ public class PaisMapper {
         dto.setCantidadHabitantes(entity.getCantidadHabitantes());
         dto.setContinenteId(entity.getContinenteId());
         dto.setSuperficie(entity.getSuperficie());
-        if (loadIcons){
-            List<IconDTO> iconDTOS = iconMapper.iconEntitySet2DTOList(entity.getIcons(),false);
+        if (loadIcons) {
+            List<IconDTO> iconDTOS = iconMapper.iconEntitySet2DTOList(entity.getIcons(), false);
             dto.setIcons(iconDTOS);
         }
         return dto;
@@ -42,13 +41,13 @@ public class PaisMapper {
 
     public List<PaisDTO> paisEntityList2DTOList(List<PaisEntity> entities, boolean loadIcons) {
         List<PaisDTO> dtos = new ArrayList<>();
-        for (PaisEntity entity : entities){
+        for (PaisEntity entity : entities) {
             dtos.add(paisEntity2DTO(entity, loadIcons));
         }
         return dtos;
     }
 
-    public void paisEntityRefreshValues (PaisEntity entity, PaisDTO paisDTO){
+    public void paisEntityRefreshValues(PaisEntity entity, PaisDTO paisDTO) {
         entity.setImagen(paisDTO.getImagen());
         entity.setDenominacion(paisDTO.getDenominacion());
         entity.setCantidadHabitantes(paisDTO.getCantidadHabitantes());

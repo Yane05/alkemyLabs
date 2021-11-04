@@ -1,4 +1,4 @@
-package com.alkemy.challengeAlternativo.icons.dto;
+package com.alkemy.challengeAlternativo.icons.auth.dto;
 
 import lombok.Data;
 
