@@ -1,5 +1,6 @@
 package com.alkemy.challengeAlternativo.icons.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +16,7 @@ public class PaisDTO {
     private String denominacion;
     private Long cantidadHabitantes;
     private Long superficie;
-    private List<IconDTO> icons;
     private Long continenteId;
+    private List<IconDTO> icons;
+
 }
