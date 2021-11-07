@@ -25,7 +25,7 @@ import java.util.Set;
 @Getter
 @Setter
 @SQLDelete(sql = "UPDATE pais SET deleted = true WHERE id = ?")
-@Where(clause = "delete = false")
+@Where(clause = "deleted = false")
 
 public class PaisEntity {
 

@@ -2,10 +2,10 @@ package com.alkemy.challengeAlternativo.icons.repository.specifications;
 
 import com.alkemy.challengeAlternativo.icons.dto.PaisFiltersDTO;
 import com.alkemy.challengeAlternativo.icons.entity.ContinenteEntity;
+import com.alkemy.challengeAlternativo.icons.entity.IconEntity;
 import com.alkemy.challengeAlternativo.icons.entity.PaisEntity;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.criteria.Expression;
@@ -28,10 +28,11 @@ public class PaisSpecification {
                         )
                 );
             }
-            if (!CollectionUtils.isEmpty(filtersDTO.getContinentes())) {
-                Join<ContinenteEntity, PaisEntity> join = root.join("continentes", JoinType.INNER);
-                Expression<String> continenteId = join.get("id");
-                predicates.add(continenteId.in(filtersDTO.getContinentes()));
+            if (StringUtils.hasLength(filtersDTO.getContinenteId().toString())) {
+                Long continenteId = filtersDTO.getContinenteId();
+                Join<ContinenteEntity, PaisEntity> join = root.join("continente", JoinType.INNER);
+                Expression<String> continente = join.get("id");
+                predicates.add(continente.in(filtersDTO.getContinenteId()));
             }
 
             //Remove duplicates

@@ -1,7 +1,9 @@
 package com.alkemy.challengeAlternativo.icons.mapper;
 
 import com.alkemy.challengeAlternativo.icons.dto.ContinenteDTO;
+import com.alkemy.challengeAlternativo.icons.dto.IconDTO;
 import com.alkemy.challengeAlternativo.icons.entity.ContinenteEntity;
+import com.alkemy.challengeAlternativo.icons.entity.IconEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -30,5 +32,10 @@ public class ContinenteMapper {
             dtos.add(continenteEntity2DTO(entity));
         }
         return dtos;
+    }
+
+    public void continenteEntityRefreshValues(ContinenteEntity entity, ContinenteDTO continenteDTO) {
+        entity.setImagen(continenteDTO.getImagen());
+        entity.setDenominacion(continenteDTO.getDenominacion());
     }
 }

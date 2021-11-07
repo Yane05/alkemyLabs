@@ -56,8 +56,8 @@ public class PaisServiceImpl implements PaisService {
         return paisRepository.getById(id);
     }
 
-    public List<PaisDTO> getByFilters(String name, Set<Long> continentes, String order) {
-        PaisFiltersDTO filtersDTO = new PaisFiltersDTO(name, continentes, order);
+    public List<PaisDTO> getByFilters(String name, Long continente, String order) {
+        PaisFiltersDTO filtersDTO = new PaisFiltersDTO(name, continente, order);
         List<PaisEntity> entities = paisRepository.findAll(paisSpecification.getByFilters(filtersDTO));
         List<PaisDTO> dtos = paisMapper.paisEntityList2DTOList(entities, true);
         return dtos;

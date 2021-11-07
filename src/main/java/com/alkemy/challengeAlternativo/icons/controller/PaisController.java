@@ -34,10 +34,10 @@ public class PaisController {
     @GetMapping
     public ResponseEntity<List<PaisDTO>> getDetailsByFilters(
             @RequestParam(required = false) String name,
-            @RequestParam(required = false) Set<Long> continentes,
+            @RequestParam(required = false) Long continenteId,
             @RequestParam(required = false, defaultValue = "ASC") String order
     ) {
-        List<PaisDTO> paises = paisService.getByFilters(name, continentes, order);
+        List<PaisDTO> paises = paisService.getByFilters(name, continenteId, order);
         return ResponseEntity.ok(paises);
     }
 

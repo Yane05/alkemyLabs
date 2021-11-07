@@ -3,6 +3,7 @@ package com.alkemy.challengeAlternativo.icons.auth.service;
 import com.alkemy.challengeAlternativo.icons.auth.dto.UserDTO;
 import com.alkemy.challengeAlternativo.icons.auth.entity.UserEntity;
 import com.alkemy.challengeAlternativo.icons.auth.repository.UserRepository;
+import com.alkemy.challengeAlternativo.icons.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,25 +18,25 @@ public class UserDetailsCustomService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
-    //@Autowired
-    //private EmailService emailService;
+    @Autowired
+    private EmailService emailService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity userEntity = userRepository.findByUsername(username);
-        if (userEntity == null){
+        if (userEntity == null) {
             throw new UsernameNotFoundException("Username or password not found");
         }
         return new User(userEntity.getUsername(), userEntity.getPassword(), Collections.emptyList());
     }
 
-    public boolean save(UserDTO userDTO){
+    public boolean save(UserDTO userDTO) {
         UserEntity userEntity = new UserEntity();
         userEntity.setUsername(userDTO.getUsername());
         userEntity.setPassword(userDTO.getPassword());
         userEntity = userRepository.save(userEntity);
-        if (userEntity != null){
-            //emailService.sendWelcomeEmailTo(userEntity.getUsername());
+        if (userEntity != null) {
+            emailService.sendWelcomeEmailTo(userEntity.getUsername());
         }
         return userEntity != null;
     }

@@ -3,18 +3,16 @@ package com.alkemy.challengeAlternativo.icons.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Set;
-
 @Getter
 @Setter
 public class PaisFiltersDTO {
     private String name;
-    private Set<Long> continentes;
+    private Long continenteId;
     private String order;
 
-    public PaisFiltersDTO(String name, Set<Long> continentes, String order) {
+    public PaisFiltersDTO(String name, Long continenteId, String order) {
         this.name = name;
-        this.continentes = continentes;
+        this.continenteId = continenteId;
         this.order = order;
     }
 

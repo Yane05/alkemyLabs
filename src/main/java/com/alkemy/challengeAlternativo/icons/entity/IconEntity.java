@@ -23,7 +23,7 @@ import java.util.List;
 @Getter
 @Setter
 @SQLDelete(sql = "UPDATE icon SET deleted = true WHERE id = ?")
-@Where(clause = "delete = false")
+@Where(clause = "deleted = false")
 
 public class IconEntity {
     @Id

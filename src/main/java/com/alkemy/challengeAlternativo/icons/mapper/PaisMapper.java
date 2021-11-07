@@ -21,6 +21,7 @@ public class PaisMapper {
         paisEntity.setDenominacion(dto.getDenominacion());
         paisEntity.setCantidadHabitantes(dto.getCantidadHabitantes());
         paisEntity.setSuperficie(dto.getSuperficie());
+        paisEntity.setContinenteId(dto.getContinenteId());
         return paisEntity;
     }
 
