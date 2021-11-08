@@ -1,5 +1,6 @@
 package com.alkemy.challengeAlternativo.icons.controller;
 
+import com.alkemy.challengeAlternativo.icons.dto.IconBasicDTO;
 import com.alkemy.challengeAlternativo.icons.dto.IconDTO;
 import com.alkemy.challengeAlternativo.icons.service.IconService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,13 @@ public class IconController {
     private IconService iconService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<IconDTO>> getAll(){
-        List<IconDTO> icons = iconService.getAllIcons();
+    public ResponseEntity<List<IconBasicDTO>> getAll(){
+        List<IconBasicDTO> icons = iconService.getAllIcons();
+        return ResponseEntity.ok().body(icons);
+    }
+    @GetMapping("/details")
+    public ResponseEntity<List<IconDTO>> getAllDetailed(){
+        List<IconDTO> icons = iconService.getAllIconsforDetails();
         return ResponseEntity.ok().body(icons);
     }
 

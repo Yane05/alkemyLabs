@@ -1,5 +1,6 @@
 package com.alkemy.challengeAlternativo.icons.service;
 
+import com.alkemy.challengeAlternativo.icons.dto.IconBasicDTO;
 import com.alkemy.challengeAlternativo.icons.dto.IconDTO;
 import com.alkemy.challengeAlternativo.icons.entity.IconEntity;
 
@@ -9,7 +10,9 @@ import java.util.Set;
 public interface IconService {
     IconDTO save(IconDTO dto);
 
-    List<IconDTO> getAllIcons();
+    List<IconBasicDTO> getAllIcons();
+
+    List<IconDTO> getAllIconsforDetails();
 
     void delete(Long id);
 

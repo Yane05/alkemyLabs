@@ -1,6 +1,8 @@
 package com.alkemy.challengeAlternativo.icons.mapper;
 
+import com.alkemy.challengeAlternativo.icons.dto.IconBasicDTO;
 import com.alkemy.challengeAlternativo.icons.dto.IconDTO;
+import com.alkemy.challengeAlternativo.icons.dto.PaisBasicDTO;
 import com.alkemy.challengeAlternativo.icons.dto.PaisDTO;
 import com.alkemy.challengeAlternativo.icons.entity.IconEntity;
 import com.alkemy.challengeAlternativo.icons.entity.PaisEntity;
@@ -58,6 +60,19 @@ public class PaisMapper {
         List<PaisDTO> dtos = new ArrayList<>();
         for (PaisEntity entity : entities) {
             dtos.add(paisEntity2DTO(entity, loadIcons));
+        }
+        return dtos;
+    }
+
+    public List<PaisBasicDTO> paisEntityList2BasicDTOList(List<PaisEntity> entities) {
+        List<PaisBasicDTO> dtos = new ArrayList<>();
+        PaisBasicDTO basicDTO;
+        for (PaisEntity entity : entities) {
+            basicDTO = new PaisBasicDTO();
+            basicDTO.setId(entity.getId());
+            basicDTO.setImagen(entity.getImagen());
+            basicDTO.setDenominacion(entity.getDenominacion());
+            basicDTO.setCantidadHabitantes(entity.getCantidadHabitantes());
         }
         return dtos;
     }

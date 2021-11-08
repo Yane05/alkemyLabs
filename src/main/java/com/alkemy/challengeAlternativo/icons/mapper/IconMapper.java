@@ -67,15 +67,6 @@ public class IconMapper {
         return dtos;
     }
 
-    /*
-    public IconEntity iconBasicDTO2Entity (IconBasicDTO basicDto){
-        IconEntity iconEntity = new IconEntity();
-        iconEntity.setImagen(basicDto.getImagen());
-        iconEntity.setDenominacion(basicDto.getDenominacion());
-        return iconEntity;
-    }
-     */
-
     public List<IconBasicDTO> iconEntitySet2BasicDTOList(Collection<IconEntity> entities) {
         List<IconBasicDTO> dtos = new ArrayList<>();
         IconBasicDTO basicDTO;

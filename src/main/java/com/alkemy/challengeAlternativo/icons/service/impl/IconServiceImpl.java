@@ -1,5 +1,6 @@
 package com.alkemy.challengeAlternativo.icons.service.impl;
 
+import com.alkemy.challengeAlternativo.icons.dto.IconBasicDTO;
 import com.alkemy.challengeAlternativo.icons.dto.IconDTO;
 import com.alkemy.challengeAlternativo.icons.dto.IconFiltersDTO;
 import com.alkemy.challengeAlternativo.icons.entity.IconEntity;
@@ -50,9 +51,15 @@ public class IconServiceImpl implements IconService {
         return iconRepository.getById(id);
     }
 
-    public List<IconDTO> getAllIcons() {
+    public List<IconDTO> getAllIconsforDetails() {
         List<IconEntity> entities = iconRepository.findAll();
         List<IconDTO> result = iconMapper.iconEntitySet2DTOList(entities, true);
+        return result;
+    }
+
+    public List<IconBasicDTO> getAllIcons() {
+        List<IconEntity> entities = iconRepository.findAll();
+        List<IconBasicDTO> result = iconMapper.iconEntitySet2BasicDTOList(entities);
         return result;
     }
 

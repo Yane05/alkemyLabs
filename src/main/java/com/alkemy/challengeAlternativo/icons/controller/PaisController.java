@@ -1,5 +1,6 @@
 package com.alkemy.challengeAlternativo.icons.controller;
 
+import com.alkemy.challengeAlternativo.icons.dto.PaisBasicDTO;
 import com.alkemy.challengeAlternativo.icons.dto.PaisDTO;
 import com.alkemy.challengeAlternativo.icons.service.PaisService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,13 @@ public class PaisController {
     private PaisService paisService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<PaisDTO>> getAll() {
-        List<PaisDTO> paises = paisService.getAllPaises();
+    public ResponseEntity<List<PaisBasicDTO>> getAll() {
+        List<PaisBasicDTO> paises = paisService.getAllPaises();
+        return ResponseEntity.ok().body(paises);
+    }
+    @GetMapping("/details")
+    public ResponseEntity<List<PaisDTO>> getAllDetailed() {
+        List<PaisDTO> paises = paisService.getAllPaisesForDetails();
         return ResponseEntity.ok().body(paises);
     }
 

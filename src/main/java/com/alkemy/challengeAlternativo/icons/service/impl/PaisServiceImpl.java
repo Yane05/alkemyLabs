@@ -1,5 +1,6 @@
 package com.alkemy.challengeAlternativo.icons.service.impl;
 
+import com.alkemy.challengeAlternativo.icons.dto.PaisBasicDTO;
 import com.alkemy.challengeAlternativo.icons.dto.PaisDTO;
 import com.alkemy.challengeAlternativo.icons.dto.PaisFiltersDTO;
 import com.alkemy.challengeAlternativo.icons.entity.PaisEntity;
@@ -46,7 +47,13 @@ public class PaisServiceImpl implements PaisService {
         return result;
     }
 
-    public List<PaisDTO> getAllPaises() {
+    public List<PaisBasicDTO> getAllPaises() {
+        List<PaisEntity> entities = paisRepository.findAll();
+        List<PaisBasicDTO> result = paisMapper.paisEntityList2BasicDTOList(entities);
+        return result;
+    }
+
+    public List<PaisDTO> getAllPaisesForDetails() {
         List<PaisEntity> entities = paisRepository.findAll();
         List<PaisDTO> result = paisMapper.paisEntityList2DTOList(entities, true);
         return result;

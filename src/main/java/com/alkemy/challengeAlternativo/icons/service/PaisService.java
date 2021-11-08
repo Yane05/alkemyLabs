@@ -1,15 +1,19 @@
 package com.alkemy.challengeAlternativo.icons.service;
 
 
+import com.alkemy.challengeAlternativo.icons.dto.PaisBasicDTO;
 import com.alkemy.challengeAlternativo.icons.dto.PaisDTO;
 import com.alkemy.challengeAlternativo.icons.entity.PaisEntity;
 
 import java.util.List;
 
 public interface PaisService {
+
     PaisDTO save(PaisDTO dto);
 
-    List<PaisDTO> getAllPaises();
+    List<PaisBasicDTO> getAllPaises();
+
+    public List<PaisDTO> getAllPaisesForDetails();
 
     void delete(Long id);
 
