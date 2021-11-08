@@ -14,6 +14,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.lang.annotation.ElementType;
 
 @Service
 public class EmailServiceImpl implements EmailService {
@@ -23,15 +24,13 @@ public class EmailServiceImpl implements EmailService {
     @Value("{alkemy.icons.email.sender}")
     private String emailSender;
 
-    @Value("{alkemy.icons.email.enabled}")
-    private String enabled;
-    private boolean isEnabled = Boolean.parseBoolean(enabled);
-
-
+    /*@Value(value = "{alkemy.icons.email.enabled}")
+    private boolean enabled;
+    */
     public void sendWelcomeEmailTo(String to){
-        if (!isEnabled){
+        /*if (!enabled){
             return;
-        }
+        }*/
         String apiKey = env.getProperty("EMAIL_API_KEY");
         Email fromEmail = new Email(emailSender);
         Email toEmail = new Email(to);

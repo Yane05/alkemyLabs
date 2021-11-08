@@ -2,12 +2,14 @@ package com.alkemy.challengeAlternativo.icons.mapper;
 
 import com.alkemy.challengeAlternativo.icons.dto.IconDTO;
 import com.alkemy.challengeAlternativo.icons.dto.PaisDTO;
+import com.alkemy.challengeAlternativo.icons.entity.IconEntity;
 import com.alkemy.challengeAlternativo.icons.entity.PaisEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Component
 public class PaisMapper {
@@ -15,13 +17,17 @@ public class PaisMapper {
     @Autowired
     private IconMapper iconMapper;
 
-    public PaisEntity paisDTO2Entity(PaisDTO dto) {
+    public PaisEntity paisDTO2Entity(PaisDTO dto, boolean loadIcons) {
         PaisEntity paisEntity = new PaisEntity();
         paisEntity.setImagen(dto.getImagen());
         paisEntity.setDenominacion(dto.getDenominacion());
         paisEntity.setCantidadHabitantes(dto.getCantidadHabitantes());
         paisEntity.setSuperficie(dto.getSuperficie());
         paisEntity.setContinenteId(dto.getContinenteId());
+        if (loadIcons) {
+            Set<IconEntity> icons = iconMapper.iconDTOList2EntityList(dto.getIcons());
+            paisEntity.setIcons(icons);
+        }
         return paisEntity;
     }
 
@@ -40,6 +46,14 @@ public class PaisMapper {
         return dto;
     }
 
+    public List<PaisEntity> paisDTOList2EntityList(List<PaisDTO> dtos) {
+        List<PaisEntity> paisEntities = new ArrayList<>();
+        for (PaisDTO dto : dtos){
+            paisEntities.add(paisDTO2Entity(dto, false));
+        }
+        return paisEntities;
+    }
+
     public List<PaisDTO> paisEntityList2DTOList(List<PaisEntity> entities, boolean loadIcons) {
         List<PaisDTO> dtos = new ArrayList<>();
         for (PaisEntity entity : entities) {
@@ -55,4 +69,5 @@ public class PaisMapper {
         entity.setSuperficie(paisDTO.getSuperficie());
         entity.setContinenteId(paisDTO.getContinenteId());
     }
+
 }

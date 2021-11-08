@@ -29,7 +29,7 @@ public class IconServiceImpl implements IconService {
     private IconMapper iconMapper;
 
     public IconDTO save(IconDTO dto) {
-        IconEntity entity = iconMapper.iconDTO2Entity(dto);
+        IconEntity entity = iconMapper.iconDTO2Entity(dto, true);
         IconEntity entitySaved = iconRepository.save(entity);
         IconDTO result = iconMapper.iconEntity2DTO(entitySaved, true);
         return result;

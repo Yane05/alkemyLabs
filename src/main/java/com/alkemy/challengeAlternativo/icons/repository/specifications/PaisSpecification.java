@@ -24,15 +24,14 @@ public class PaisSpecification {
                 predicates.add(
                         criteriaBuilder.like(
                                 criteriaBuilder.lower(root.get("denominacion")),
-                                "%" + filtersDTO.getName().toLowerCase() + "%"
-                        )
+                                "%" + filtersDTO.getName().toLowerCase() + "%")
                 );
             }
             if (StringUtils.hasLength(filtersDTO.getContinenteId().toString())) {
                 Long continenteId = filtersDTO.getContinenteId();
-                Join<ContinenteEntity, PaisEntity> join = root.join("continente", JoinType.INNER);
-                Expression<String> continente = join.get("id");
-                predicates.add(continente.in(filtersDTO.getContinenteId()));
+                predicates.add(
+                        criteriaBuilder.equal(root.get("continenteId"), continenteId)
+                );
             }
 
             //Remove duplicates
