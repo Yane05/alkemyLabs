@@ -51,7 +51,7 @@ public class IconServiceImpl implements IconService {
         return iconRepository.getById(id);
     }
 
-    public List<IconDTO> getAllIconsforDetails() {
+    public List<IconDTO> getAllIconsDetailed() {
         List<IconEntity> entities = iconRepository.findAll();
         List<IconDTO> result = iconMapper.iconEntitySet2DTOList(entities, true);
         return result;

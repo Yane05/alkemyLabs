@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("paises")
@@ -33,7 +32,7 @@ public class PaisController {
     }
     @GetMapping("/details")
     public ResponseEntity<List<PaisDTO>> getAllDetailed() {
-        List<PaisDTO> paises = paisService.getAllPaisesForDetails();
+        List<PaisDTO> paises = paisService.getAllPaisesDetailed();
         return ResponseEntity.ok().body(paises);
     }
 

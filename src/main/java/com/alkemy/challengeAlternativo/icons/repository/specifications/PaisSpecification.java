@@ -6,6 +6,7 @@ import com.alkemy.challengeAlternativo.icons.entity.IconEntity;
 import com.alkemy.challengeAlternativo.icons.entity.PaisEntity;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.criteria.Expression;
@@ -27,7 +28,7 @@ public class PaisSpecification {
                                 "%" + filtersDTO.getName().toLowerCase() + "%")
                 );
             }
-            if (StringUtils.hasLength(filtersDTO.getContinenteId().toString())) {
+            if (!ObjectUtils.isEmpty(filtersDTO.getContinenteId())) {
                 Long continenteId = filtersDTO.getContinenteId();
                 predicates.add(
                         criteriaBuilder.equal(root.get("continenteId"), continenteId)

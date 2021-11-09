@@ -24,7 +24,4 @@ public class IconFiltersDTO {
         return this.order.compareToIgnoreCase("ASC") == 0;
     }
 
-    public boolean isDESC() {
-        return this.order.compareToIgnoreCase("DESC") == 0;
-    }
 }

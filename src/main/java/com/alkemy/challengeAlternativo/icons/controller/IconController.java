@@ -33,7 +33,7 @@ public class IconController {
     }
     @GetMapping("/details")
     public ResponseEntity<List<IconDTO>> getAllDetailed(){
-        List<IconDTO> icons = iconService.getAllIconsforDetails();
+        List<IconDTO> icons = iconService.getAllIconsDetailed();
         return ResponseEntity.ok().body(icons);
     }
 

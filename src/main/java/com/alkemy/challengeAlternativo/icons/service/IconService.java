@@ -12,7 +12,7 @@ public interface IconService {
 
     List<IconBasicDTO> getAllIcons();
 
-    List<IconDTO> getAllIconsforDetails();
+    List<IconDTO> getAllIconsDetailed();
 
     void delete(Long id);
 

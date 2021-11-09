@@ -53,7 +53,7 @@ public class PaisServiceImpl implements PaisService {
         return result;
     }
 
-    public List<PaisDTO> getAllPaisesForDetails() {
+    public List<PaisDTO> getAllPaisesDetailed() {
         List<PaisEntity> entities = paisRepository.findAll();
         List<PaisDTO> result = paisMapper.paisEntityList2DTOList(entities, true);
         return result;

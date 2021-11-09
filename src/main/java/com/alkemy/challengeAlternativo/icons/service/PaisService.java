@@ -13,7 +13,7 @@ public interface PaisService {
 
     List<PaisBasicDTO> getAllPaises();
 
-    public List<PaisDTO> getAllPaisesForDetails();
+    public List<PaisDTO> getAllPaisesDetailed();
 
     void delete(Long id);
 
