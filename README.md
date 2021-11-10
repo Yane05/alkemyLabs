@@ -1,5 +1,5 @@
 # AlkemyLabs
-Challenge Pre Aceleracion Java
+Proyecto realizado en Pre-Aceleracion Java
 
 Alkemy Academy.
 ***
