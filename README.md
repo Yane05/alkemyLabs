@@ -1,7 +1,5 @@
-# AlkemyLabs
-Proyecto realizado en Pre-Aceleracion Java
+# API para explorar los principales íconos geográficos del mundo
 
-Alkemy Academy.
 ***
 Spring Boot & Postman
 
